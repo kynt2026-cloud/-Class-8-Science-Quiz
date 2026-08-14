@@ -1,481 +1,614 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class 8 Science: Cell - Structure and Functions (Interactive Quiz)</title>
-    <style>
-        footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 25px;
-    color: #000080;                /* Light grey/white text for contrast */
-    font-size: 0.85rem;
-    border-top: 2px solid #1a252f;
-    margin-top: auto;
-    background-color: #1b2a4a;      /* Deep Navy Blue */
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class 8 Science: Olympiad Cell Quiz</title>
 
-.footer-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 600;
-    color: #ffffff;
-}
+  <style>
+    :root{
+      --primary:#2c3e50;
+      --accent:#27ae60;
+      --accent-hover:#219150;
+      --bg:#f4f7f6;
+      --card:#ffffff;
+      --text:#333;
+      --border:#e0e0e0;
+      --correct-bg:#e8f5e9;
+      --correct-border:#27ae60;
+    }
 
-.footer-logo {
-    height: 38px;
-    width: auto;
-    background-color: #ffffff;     /* White container background so the logo pops */
-    padding: 3px 6px;
-    border-radius: 5px;
-    object-fit: contain;
-}
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #27ae60;
-            --accent-hover: #219150;
-            --bg-color: #f4f7f6;
-            --card-bg: #ffffff;
-            --text-color: #333333;
-            --border-color: #e0e0e0;
-            --correct-bg: #e8f5e9;
-            --correct-border: #27ae60;
-        }
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+      font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    body{
+      background:var(--bg);
+      color:var(--text);
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+    header{
+      background:var(--primary);
+      color:#fff;
+      padding:12px 25px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:100;
+      box-shadow:0 2px 5px rgba(0,0,0,.1);
+    }
 
-        /* Top Navigation Header */
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+    .header-brand{
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
 
-        /* Added Styles for Brand Logo Alignment */
-        .header-brand {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+    .school-logo{
+      height:48px;
+      background:#fff;
+      padding:4px 8px;
+      border-radius:6px;
+    }
 
-        .school-logo {
-            height: 48px;
-            width: auto;
-            background-color: #ffffff;
-            padding: 4px 8px;
-            border-radius: 6px;
-            object-fit: contain;
-        }
+    .header-title{
+      font-size:1.2rem;
+      font-weight:600;
+    }
 
-        .header-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
+    .nav-controls{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
 
-        .nav-controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
+    .btn{
+      background:var(--accent);
+      color:#fff;
+      border:none;
+      padding:8px 16px;
+      border-radius:6px;
+      cursor:pointer;
+      font-weight:600;
+    }
 
-        .btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: background 0.2s, transform 0.1s;
-        }
+    .btn:hover{ background:var(--accent-hover); }
 
-        .btn:hover {
-            background-color: var(--accent-hover);
-        }
+    .btn-secondary{ background:#34495e; }
+    .btn-secondary:hover{ background:#1a252f; }
 
-        .btn:disabled {
-            background-color: #bdc3c7;
-            cursor: not-allowed;
-        }
+    .btn:disabled{
+      background:#bdc3c7;
+      cursor:not-allowed;
+    }
 
-        .btn-secondary {
-            background-color: #34495e;
-        }
+    .slide-counter{
+      background:rgba(255,255,255,.2);
+      padding:6px 12px;
+      border-radius:4px;
+      font-size:.9rem;
+    }
 
-        .btn-secondary:hover {
-            background-color: #1a252f;
-        }
+    main{
+      flex:1;
+      max-width:900px;
+      width:100%;
+      margin:30px auto;
+      padding:0 20px;
+    }
 
-        .slide-counter {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-        }
+    .slide{
+      background:var(--card);
+      border-radius:12px;
+      padding:40px;
+      box-shadow:0 4px 15px rgba(0,0,0,.05);
+      margin-bottom:25px;
+      display:none;
+      animation:fadeIn .3s ease-in-out;
+    }
 
-        /* Main Container */
-        main {
-            flex: 1;
-            max-width: 900px;
-            width: 100%;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
+    .slide.active{ display:block !important; }
 
-        /* Slide Styles */
-        .slide {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-            display: none; /* Default hidden for presentation mode */
-            animation: fadeIn 0.3s ease-in-out;
-        }
+    body.scroll-mode .slide{
+      display:block !important;
+      margin-bottom:30px;
+    }
 
-        .slide.active {
-            display: block !important;
-        }
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(10px)}
+      to{opacity:1;transform:translateY(0)}
+    }
 
-        /* Scroll Mode Override */
-        body.scroll-mode .slide {
-            display: block !important;
-            margin-bottom: 30px;
-        }
+    .slide-title{
+      color:var(--primary);
+      font-size:1.5rem;
+      margin-bottom:20px;
+      border-bottom:2px solid var(--border);
+      padding-bottom:10px;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .question-text{
+      font-size:1.15rem;
+      font-weight:600;
+      margin-bottom:20px;
+      color:#2c3e50;
+      line-height:1.6;
+    }
 
-        .slide-title {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 10px;
-        }
+    .options-list{
+      list-style:none;
+      margin-bottom:25px;
+    }
 
-        .question-text {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #2c3e50;
-        }
+    .option-item{
+      background:#f8f9fa;
+      border:2px solid var(--border);
+      border-radius:8px;
+      padding:14px 18px;
+      margin-bottom:12px;
+      cursor:pointer;
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      transition:.2s;
+      line-height:1.5;
+    }
 
-        .options-list {
-            list-style: none;
-            margin-bottom: 25px;
-        }
+    .option-item:hover{
+      border-color:var(--accent);
+      background:#f0f9f4;
+    }
 
-        .option-item {
-            background-color: #f8f9fa;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            padding: 14px 18px;
-            margin-bottom: 12px;
-            font-size: 1.05rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-        }
+    .option-prefix{
+      font-weight:bold;
+      color:var(--primary);
+      min-width:22px;
+    }
 
-        .option-item:hover {
-            border-color: var(--accent-color);
-            background-color: #f0f9f4;
-        }
+    .option-item.correct-revealed{
+      border-color:var(--correct-border);
+      background:var(--correct-bg);
+      font-weight:600;
+    }
 
-        .option-prefix {
-            font-weight: bold;
-            margin-right: 12px;
-            color: var(--primary-color);
-        }
+    .answer-box{
+      display:none;
+      background:var(--correct-bg);
+      border-left:5px solid var(--correct-border);
+      padding:18px;
+      border-radius:0 8px 8px 0;
+      margin-top:20px;
+    }
 
-        /* Answer Reveal Box */
-        .answer-box {
-            display: none;
-            background-color: var(--correct-bg);
-            border-left: 5px solid var(--correct-border);
-            padding: 18px;
-            border-radius: 0 8px 8px 0;
-            margin-top: 20px;
-        }
+    .answer-box.show{ display:block !important; }
 
-        .answer-box.show {
-            display: block !important;
-        }
+    .answer-title{
+      color:var(--accent);
+      font-weight:bold;
+      margin-bottom:8px;
+      font-size:1.05rem;
+    }
 
-        .answer-title {
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
+    .explanation{
+      line-height:1.6;
+      color:#2e7d32;
+    }
 
-        .explanation {
-            font-size: 1rem;
-            line-height: 1.5;
-            color: #2e7d32;
-        }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:16px 0 22px;
+      font-size:.98rem;
+    }
 
-        /* Correct option styling when revealed */
-        .option-item.correct-revealed {
-            border-color: var(--correct-border);
-            background-color: var(--correct-bg);
-            font-weight: 600;
-        }
+    th,td{
+      border:1px solid var(--border);
+      padding:10px 12px;
+      text-align:left;
+      vertical-align:top;
+    }
 
-        /* Instructions & Footer */
-        .instructions {
-            text-align: center;
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-top: 20px;
-        }
+    th{
+      background:#f4f6f8;
+      color:var(--primary);
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            color:white;
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border-color);
-            margin-top: auto;
-        }
-    </style>
+    .instructions{
+      text-align:center;
+      color:#7f8c8d;
+      font-size:.9rem;
+      margin-top:20px;
+    }
+
+    footer{
+      background:#1b2a4a;
+      color:#fff;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:12px 25px;
+      margin-top:auto;
+      font-size:.85rem;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .footer-left{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:600;
+    }
+
+    .footer-logo{
+      height:38px;
+      background:#fff;
+      padding:3px 6px;
+      border-radius:5px;
+    }
+
+    @media (max-width:700px){
+      header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+      }
+
+      .nav-controls{
+        flex-wrap:wrap;
+      }
+
+      .slide{
+        padding:24px;
+      }
+
+      .question-text{
+        font-size:1.05rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <header>
-        <div class="header-brand">
-            <!-- KENSRI Logo Added Here -->
-            <img src="https://kensrischool-download.web.app/assets/Ken_Logo.png" alt="KENSRI School Logo" class="school-logo" onerror="this.onerror=null; this.src='https://kensri.in/wp-content/uploads/2020/09/kensri-logo.png';">
-            <div class="header-title">Class 8 Science: Cell Quiz</div>
-        </div>
-        <div class="nav-controls">
-            <button class="btn btn-secondary" id="prevBtn" onclick="changeSlide(-1)">❮ Prev</button>
-            <span class="slide-counter" id="slideCounter">Slide 1 of 4</span>
-            <button class="btn btn-secondary" id="nextBtn" onclick="changeSlide(1)">Next ❯</button>
-            <button class="btn" id="toggleViewBtn" onclick="toggleViewMode()">Scroll Mode</button>
-        </div>
-    </header>
+<header>
+  <div class="header-brand">
+    <img src="https://kensrischool-download.web.app/assets/Ken_Logo.png"
+         alt="KENSRI School Logo"
+         class="school-logo"
+         onerror="this.onerror=null;this.src='https://kensri.in/wp-content/uploads/2020/09/kensri-logo.png';">
+    <div class="header-title">Class 8 Science: Olympiad Cell Quiz</div>
+  </div>
 
-    <main>
+  <div class="nav-controls">
+    <button class="btn btn-secondary" id="prevBtn" onclick="changeSlide(-1)">❮ Prev</button>
+    <span class="slide-counter" id="slideCounter">Slide 1 of 7</span>
+    <button class="btn btn-secondary" id="nextBtn" onclick="changeSlide(1)">Next ❯</button>
+    <button class="btn" id="toggleViewBtn" onclick="toggleViewMode()">Scroll Mode</button>
+  </div>
+</header>
 
-        <!-- Slide 1 -->
-        <div class="slide active" id="slide-1">
-            <div class="slide-title">Question 1 — Basic Unit of Life</div>
-            <div class="question-text">Which of the following is defined as the basic structural and functional unit of all living organisms?</div>
-            <ul class="options-list">
-                <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">A.</span> Tissue</li>
-                <li class="option-item" data-correct="true" onclick="selectOption(this)"><span class="option-prefix">B.</span> Cell</li>
-                <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">C.</span> Organ</li>
-                <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">D.</span> Organ System</li>
-            </ul>
-            <button class="btn" onclick="toggleAnswer('answer-1', this)">Show Answer</button>
-            
-            <div class="answer-box" id="answer-1">
-                <div class="answer-title">Correct Answer: B. Cell</div>
-                <div class="explanation">
-                    <strong>Explanation:</strong> Just as bricks are assembled to make a building, cells are assembled to make the body of every living organism. Hence, the cell is the basic structural and fundamental unit of life.
-                </div>
-            </div>
-        </div>
+<main>
 
-        <!-- Slide 2 -->
-        <div class="slide" id="slide-2">
-            <div class="slide-title">Question 2 — Cellular Powerhouse</div>
-            <div class="question-text">Which cell organelle is responsible for generating energy through respiration and is known as the "Powerhouse of the Cell"?</div>
-            <ul class="options-list">
-                <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">A.</span> Chloroplast</li>
-                <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">B.</span> Ribosome</li>
-                <li class="option-item" data-correct="true" onclick="selectOption(this)"><span class="option-prefix">C.</span> Mitochondrion</li>
-                <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">D.</span> Endoplasmic Reticulum</li>
-            </ul>
-            <button class="btn" onclick="toggleAnswer('answer-2', this)">Show Answer</button>
-            
-            <div class="answer-box" id="answer-2">
-                <div class="answer-title">Correct Answer: C. Mitochondrion</div>
-                <div class="explanation">
-                    <strong>Explanation:</strong> Mitochondria produce cellular energy in the form of ATP (Adenosine Triphosphate) through cellular respiration, earning them the title "Powerhouse of the Cell".
-                </div>
-            </div>
-        </div>
+  <!-- Q1 -->
+  <div class="slide active" id="slide-1">
+    <div class="slide-title">Question 1 — Basic Unit of Life</div>
 
-        <!-- Slide 3 -->
-        <div class="slide" id="slide-3">
-            <div class="slide-title">Question 3 — Plant vs Animal Cell</div>
-            <div class="question-text">Which structure provides rigidity and shape to plant cells, but is completely absent in animal cells?</div>
-            <ul class="options-list">
-                <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">A.</span> Plasma Membrane</li>
-                <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">B.</span> Nucleus</li>
-                <li class="option-item" data-correct="true" onclick="selectOption(this)"><span class="option-prefix">C.</span> Cell Wall</li>
-                <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">D.</span> Cytoplasm</li>
-            </ul>
-            <button class="btn" onclick="toggleAnswer('answer-3', this)">Show Answer</button>
-            
-            <div class="answer-box" id="answer-3">
-                <div class="answer-title">Correct Answer: C. Cell Wall</div>
-                <div class="explanation">
-                    <strong>Explanation:</strong> Plants require protection against variations in temperature, high wind speed, atmospheric moisture, etc., because they cannot move. The outer rigid layer outside the cell membrane is called the <strong>Cell Wall</strong>.
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 4 -->
-        <div class="slide" id="slide-4">
-            <div class="slide-title">Summary & Key Takeaways</div>
-            <div class="question-text">Key Concepts for Class 8 Cell Biology:</div>
-            <ul style="line-height: 1.8; margin-left: 20px; color: #444; font-size: 1.05rem;">
-                <li><strong>Discovery:</strong> Robert Hooke observed cells in a cork slice in 1665.</li>
-                <li><strong>Plant Cells:</strong> Have a Cell Wall, Chloroplasts (for photosynthesis), and a Large Central Vacuole.</li>
-                <li><strong>Animal Cells:</strong> Lack Cell Walls and Chloroplasts, and contain small, temporary vacuoles.</li>
-                <li><strong>Prokaryotes vs Eukaryotes:</strong> Organisms lacking a well-defined nuclear membrane (like bacteria) are Prokaryotes; those with a true nucleus are Eukaryotes.</li>
-            </ul>
-        </div>
-
-        <div class="instructions" id="instructionText">
-            Tip: Use Left & Right Arrow keys on your keyboard to navigate between slides!
-        </div>
-
-    </main>
-
-  <footer>
-    <div class="footer-left">
-        <img src="https://kensrischool-download.web.app/assets/kynt.png" alt="KYNT / KENSRI Logo" class="footer-logo" onerror="this.onerror=null; this.src='https://kensri.in/wp-content/uploads/2020/09/kensri-logo.png';">
-        <span>Build by Team Leader Karthik Prajith</span>
+    <div class="question-text">
+      A researcher removes a few cells from a leaf and places them in a nutrient medium.
+      The cells remain alive for some time and perform respiration, exchange gases,
+      and respond to stimuli. Which conclusion is most appropriate?
     </div>
-    <div class="footer-right">
-       ©2026 KYNT Team All rights reserved. 
+
+    <ul class="options-list">
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">A.</span> A leaf is the basic unit of life.</li>
+      <li class="option-item" data-correct="true" onclick="selectOption(this)"><span class="option-prefix">B.</span> A cell can carry out several life processes independently.</li>
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">C.</span> Tissues can survive without cells.</li>
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">D.</span> Organelles are independent living units.</li>
+    </ul>
+
+    <button class="btn" onclick="toggleAnswer('answer-1', this)">Show Answer</button>
+
+    <div class="answer-box" id="answer-1">
+      <div class="answer-title">Correct Answer: B</div>
+      <div class="explanation">
+        The observation shows that an individual cell can perform essential life processes such as respiration, gas exchange, and response to stimuli. This proves that the cell is the smallest structural and functional unit capable of carrying out the activities of life.
+      </div>
     </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="slide" id="slide-2">
+    <div class="slide-title">Question 2 — Cellular Powerhouse</div>
+
+    <div class="question-text">
+      Two types of human cells are examined under a microscope. Cell P contains very few mitochondria, while Cell Q contains numerous mitochondria. Which statement is most likely correct?
+    </div>
+
+    <ul class="options-list">
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">A.</span> Cell P requires more energy than Cell Q.</li>
+      <li class="option-item" data-correct="true" onclick="selectOption(this)"><span class="option-prefix">B.</span> Cell Q performs more energy-demanding activities.</li>
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">C.</span> Cell P can carry out photosynthesis.</li>
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">D.</span> Cell Q lacks a nucleus.</li>
+    </ul>
+
+    <button class="btn" onclick="toggleAnswer('answer-2', this)">Show Answer</button>
+
+    <div class="answer-box" id="answer-2">
+      <div class="answer-title">Correct Answer: B</div>
+      <div class="explanation">
+        Cells that need more energy usually contain more mitochondria because mitochondria release ATP during cellular respiration.
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="slide" id="slide-3">
+    <div class="slide-title">Question 3 — Plant vs Animal Cell</div>
+
+    <div class="question-text">
+      A student observes a cell with a rigid outer boundary and a large central vacuole,
+      but no chloroplasts are visible. Which statement is correct?
+    </div>
+
+    <ul class="options-list">
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">A.</span> It must be an animal cell.</li>
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">B.</span> It cannot be a plant cell.</li>
+      <li class="option-item" data-correct="true" onclick="selectOption(this)"><span class="option-prefix">C.</span> It is most likely a plant cell from a non-green part of a plant.</li>
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">D.</span> It is a bacterial cell.</li>
+    </ul>
+
+    <button class="btn" onclick="toggleAnswer('answer-3', this)">Show Answer</button>
+
+    <div class="answer-box" id="answer-3">
+      <div class="answer-title">Correct Answer: C</div>
+      <div class="explanation">
+        The rigid boundary indicates a cell wall, and the large vacuole is typical of plant cells. Non-green plant parts such as roots may not contain visible chloroplasts.
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="slide" id="slide-4">
+    <div class="slide-title">Question 4 — Assertion & Reason</div>
+
+    <div class="question-text">
+      <strong>Assertion (A):</strong> A plant cell placed in distilled water becomes turgid but does not burst.
+      <br><br>
+      <strong>Reason (R):</strong> The rigid cell wall develops an opposing pressure that balances the inward movement of water.
+    </div>
+
+    <ul class="options-list">
+      <li class="option-item" data-correct="true" onclick="selectOption(this)"><span class="option-prefix">A.</span> Both A and R are true, and R is the correct explanation of A.</li>
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">B.</span> Both A and R are true, but R is not the correct explanation of A.</li>
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">C.</span> A is true, but R is false.</li>
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">D.</span> A is false, but R is true.</li>
+    </ul>
+
+    <button class="btn" onclick="toggleAnswer('answer-4', this)">Show Answer</button>
+
+    <div class="answer-box" id="answer-4">
+      <div class="answer-title">Correct Answer: A</div>
+      <div class="explanation">
+        Water enters the cell by osmosis, increasing turgidity. The cell wall exerts wall pressure that prevents the cell from bursting.
+      </div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="slide" id="slide-5">
+    <div class="slide-title">Question 5 — Data Interpretation</div>
+
+    <div class="question-text">
+      A student studies three cells and records the following observations.
+    </div>
+
+    <table>
+      <tr>
+        <th>Cell</th>
+        <th>Observation</th>
+      </tr>
+      <tr>
+        <td>P</td>
+        <td>Many mitochondria, no cell wall</td>
+      </tr>
+      <tr>
+        <td>Q</td>
+        <td>Cell wall present, large vacuole, no chloroplasts</td>
+      </tr>
+      <tr>
+        <td>R</td>
+        <td>No nucleus, no mitochondria, ribosomes present</td>
+      </tr>
+    </table>
+
+    <div class="question-text">Which option correctly identifies the cells?</div>
+
+    <ul class="options-list">
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">A.</span> P – Plant cell; Q – Animal cell; R – Bacterial cell</li>
+      <li class="option-item" data-correct="true" onclick="selectOption(this)"><span class="option-prefix">B.</span> P – Animal cell; Q – Plant cell; R – Bacterial cell</li>
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">C.</span> P – Animal cell; Q – Plant cell; R – Fungal cell</li>
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">D.</span> P – Muscle cell; Q – Leaf cell; R – Virus</li>
+    </ul>
+
+    <button class="btn" onclick="toggleAnswer('answer-5', this)">Show Answer</button>
+
+    <div class="answer-box" id="answer-5">
+      <div class="answer-title">Correct Answer: B</div>
+      <div class="explanation">
+        P lacks a cell wall and has many mitochondria, so it is an animal cell. Q has a cell wall and large vacuole, indicating a plant cell from a non-green part. R lacks a nucleus but has ribosomes, so it is a bacterial cell.
+      </div>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="slide" id="slide-6">
+    <div class="slide-title">Question 6 — High Olympiad Challenge</div>
+
+    <div class="question-text">
+      A cell contains a plasma membrane, cytoplasm, ribosomes, and circular DNA.
+      It lacks a nuclear membrane, mitochondria, and chloroplasts.
+      Which statement is most accurate?
+    </div>
+
+    <ul class="options-list">
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">A.</span> It cannot synthesize proteins because it lacks mitochondria.</li>
+      <li class="option-item" data-correct="true" onclick="selectOption(this)"><span class="option-prefix">B.</span> It is a prokaryotic cell capable of independent life processes.</li>
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">C.</span> It is an animal cell in an early stage of development.</li>
+      <li class="option-item" onclick="selectOption(this)"><span class="option-prefix">D.</span> It is a virus because it lacks a nucleus.</li>
+    </ul>
+
+    <button class="btn" onclick="toggleAnswer('answer-6', this)">Show Answer</button>
+
+    <div class="answer-box" id="answer-6">
+      <div class="answer-title">Correct Answer: B</div>
+      <div class="explanation">
+        The presence of ribosomes and circular DNA without a nuclear membrane indicates a prokaryotic cell, such as a bacterium, which can perform essential life processes independently.
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="slide" id="slide-7">
+    <div class="slide-title">Summary & Key Takeaways</div>
+
+    <ul style="line-height:1.9;margin-left:20px;font-size:1.05rem;color:#444;">
+      <li><strong>Cell:</strong> Smallest structural and functional unit of life.</li>
+      <li><strong>Mitochondria:</strong> Site of ATP production during cellular respiration.</li>
+      <li><strong>Cell Wall:</strong> Provides rigidity and prevents bursting in plant cells.</li>
+      <li><strong>Large Vacuole:</strong> Maintains turgidity in plant cells.</li>
+      <li><strong>Prokaryotes:</strong> Lack a true nucleus and membrane-bound organelles.</li>
+      <li><strong>Non-green plant cells:</strong> May have a cell wall and vacuole but no visible chloroplasts.</li>
+    </ul>
+  </div>
+
+  <div class="instructions" id="instructionText">
+    Tip: Use Left/Right Arrow keys to navigate between slides.
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-left">
+    <img src="https://kensrischool-download.web.app/assets/kynt.png"
+         alt="KYNT Logo"
+         class="footer-logo"
+         onerror="this.onerror=null;this.src='https://kensri.in/wp-content/uploads/2020/09/kensri-logo.png';">
+    <span>Build by Team Leader Karthik Prajith</span>
+  </div>
+
+  <div>© 2026 KYNT Team — All rights reserved.</div>
 </footer>
 
-    <script>
-        let currentSlide = 1;
-        const totalSlides = 4;
-        let isScrollMode = false;
+<script>
+  let currentSlide = 1;
+  const totalSlides = 7;
+  let isScrollMode = false;
 
-        function updateSlideDisplay() {
-            if (isScrollMode) return;
+  function updateSlideDisplay(){
+    if(isScrollMode) return;
 
-            // Hide all slides
-            for (let i = 1; i <= totalSlides; i++) {
-                const slide = document.getElementById(`slide-${i}`);
-                if (slide) slide.classList.remove('active');
-            }
+    for(let i=1;i<=totalSlides;i++){
+      document.getElementById(`slide-${i}`)?.classList.remove('active');
+    }
 
-            // Show current slide
-            const activeSlide = document.getElementById(`slide-${currentSlide}`);
-            if (activeSlide) activeSlide.classList.add('active');
+    document.getElementById(`slide-${currentSlide}`)?.classList.add('active');
 
-            // Update Counter & Controls
-            document.getElementById('slideCounter').innerText = `Slide ${currentSlide} of ${totalSlides}`;
-            document.getElementById('prevBtn').disabled = (currentSlide === 1);
-            document.getElementById('nextBtn').disabled = (currentSlide === totalSlides);
-        }
+    document.getElementById('slideCounter').innerText =
+      `Slide ${currentSlide} of ${totalSlides}`;
 
-        function changeSlide(direction) {
-            currentSlide += direction;
-            if (currentSlide < 1) currentSlide = 1;
-            if (currentSlide > totalSlides) currentSlide = totalSlides;
-            updateSlideDisplay();
-        }
+    document.getElementById('prevBtn').disabled = currentSlide === 1;
+    document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+  }
 
-        function toggleAnswer(answerId, buttonElement) {
-            const answerBox = document.getElementById(answerId);
-            const parentSlide = buttonElement.closest('.slide');
-            
-            if (answerBox.classList.contains('show')) {
-                answerBox.classList.remove('show');
-                buttonElement.innerText = 'Show Answer';
-                if (parentSlide) {
-                    const options = parentSlide.querySelectorAll('.option-item');
-                    options.forEach(opt => opt.classList.remove('correct-revealed'));
-                }
-            } else {
-                answerBox.classList.add('show');
-                buttonElement.innerText = 'Hide Answer';
-                if (parentSlide) {
-                    const correctOption = parentSlide.querySelector('.option-item[data-correct="true"]');
-                    if (correctOption) correctOption.classList.add('correct-revealed');
-                }
-            }
-        }
+  function changeSlide(direction){
+    currentSlide += direction;
 
-        function selectOption(element) {
-            const parent = element.parentElement;
-            const items = parent.querySelectorAll('.option-item');
-            items.forEach(item => {
-                if (!item.classList.contains('correct-revealed')) {
-                    item.style.backgroundColor = '#f8f9fa';
-                }
-            });
-            
-            if (!element.classList.contains('correct-revealed')) {
-                element.style.backgroundColor = '#e3f2fd';
-            }
-        }
+    if(currentSlide < 1) currentSlide = 1;
+    if(currentSlide > totalSlides) currentSlide = totalSlides;
 
-        function toggleViewMode() {
-            isScrollMode = !isScrollMode;
-            const toggleBtn = document.getElementById('toggleViewBtn');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const counter = document.getElementById('slideCounter');
-            const instruction = document.getElementById('instructionText');
+    updateSlideDisplay();
+  }
 
-            if (isScrollMode) {
-                document.body.classList.add('scroll-mode');
-                toggleBtn.innerText = 'Slide Mode';
-                prevBtn.style.display = 'none';
-                nextBtn.style.display = 'none';
-                counter.style.display = 'none';
-                instruction.innerText = 'Scrolling Mode Active — All questions visible.';
-            } else {
-                document.body.classList.remove('scroll-mode');
-                toggleBtn.innerText = 'Scroll Mode';
-                prevBtn.style.display = 'inline-block';
-                nextBtn.style.display = 'inline-block';
-                counter.style.display = 'inline-block';
-                instruction.innerText = 'Tip: Use Left & Right Arrow keys on your keyboard to navigate between slides!';
-                updateSlideDisplay();
-            }
-        }
+  function toggleAnswer(answerId, btn){
+    const answer = document.getElementById(answerId);
+    const slide = btn.closest('.slide');
 
-        document.addEventListener('keydown', function(event) {
-            if (isScrollMode) return;
-            if (event.key === 'ArrowRight' || event.key === 'PageDown') {
-                if (currentSlide < totalSlides) changeSlide(1);
-            } else if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
-                if (currentSlide > 1) changeSlide(-1);
-            }
-        });
+    if(answer.classList.contains('show')){
+      answer.classList.remove('show');
+      btn.innerText = 'Show Answer';
+      slide.querySelectorAll('.option-item')
+           .forEach(o=>o.classList.remove('correct-revealed'));
+    }else{
+      answer.classList.add('show');
+      btn.innerText = 'Hide Answer';
+      slide.querySelector('.option-item[data-correct="true"]')
+           ?.classList.add('correct-revealed');
+    }
+  }
 
-        updateSlideDisplay();
-    </script>
+  function selectOption(el){
+    const parent = el.parentElement;
+    parent.querySelectorAll('.option-item').forEach(item=>{
+      if(!item.classList.contains('correct-revealed')){
+        item.style.backgroundColor = '#f8f9fa';
+      }
+    });
+
+    if(!el.classList.contains('correct-revealed')){
+      el.style.backgroundColor = '#e3f2fd';
+    }
+  }
+
+  function toggleViewMode(){
+    isScrollMode = !isScrollMode;
+
+    const toggleBtn = document.getElementById('toggleViewBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const counter = document.getElementById('slideCounter');
+    const instruction = document.getElementById('instructionText');
+
+    if(isScrollMode){
+      document.body.classList.add('scroll-mode');
+      toggleBtn.innerText = 'Slide Mode';
+      prevBtn.style.display = 'none';
+      nextBtn.style.display = 'none';
+      counter.style.display = 'none';
+      instruction.innerText = 'Scrolling Mode Active — All questions visible.';
+    }else{
+      document.body.classList.remove('scroll-mode');
+      toggleBtn.innerText = 'Scroll Mode';
+      prevBtn.style.display = 'inline-block';
+      nextBtn.style.display = 'inline-block';
+      counter.style.display = 'inline-block';
+      instruction.innerText = 'Tip: Use Left/Right Arrow keys to navigate between slides.';
+      updateSlideDisplay();
+    }
+  }
+
+  document.addEventListener('keydown', e=>{
+    if(isScrollMode) return;
+
+    if((e.key === 'ArrowRight' || e.key === 'PageDown') && currentSlide < totalSlides){
+      changeSlide(1);
+    }
+
+    if((e.key === 'ArrowLeft' || e.key === 'PageUp') && currentSlide > 1){
+      changeSlide(-1);
+    }
+  });
+
+  updateSlideDisplay();
+</script>
+
 </body>
 </html>
